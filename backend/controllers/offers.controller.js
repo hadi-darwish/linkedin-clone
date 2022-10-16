@@ -12,3 +12,20 @@ const getOffer = async (req, res) => {
     .exec();
   res.json(offer);
 };
+
+const createOffer = async (req, res) => {
+  const { title, description, company } = req.body;
+  try {
+    const offer = new Offer();
+    offer.title = title;
+    offer.description = description;
+    offer.company = company;
+
+    await offer.save();
+    res.json(offer);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
