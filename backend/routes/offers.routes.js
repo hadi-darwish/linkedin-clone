@@ -7,10 +7,11 @@ const {
   deleteOffer,
 } = require("../controllers/offers.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
+const companyMiddleware = require("../middlewares/company.middleware");
 const router = Router();
-router.post("/", authMiddleware, createOffer);
+router.post("/", authMiddleware, companyMiddleware, createOffer);
 router.get("/", authMiddleware, getAllOffers);
 router.get("/:id", authMiddleware, getOffer);
-router.put("/:id", authMiddleware, updateOffer);
-router.delete("/:id", authMiddleware, deleteOffer);
+router.put("/:id", authMiddleware, companyMiddleware, updateOffer);
+router.delete("/:id", authMiddleware, companyMiddleware, deleteOffer);
 module.exports = router;
