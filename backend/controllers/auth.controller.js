@@ -28,4 +28,22 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { login };
+const signup = async (req, res) => {
+  const { name, email, password, type } = req.body;
+  try {
+    const user = new User();
+    user.name = name;
+    user.email = email;
+    user.password = await bcrypt.hash(password, 10);
+    user.type = type;
+
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
+module.exports = { login, signup };
