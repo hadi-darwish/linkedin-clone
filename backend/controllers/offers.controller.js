@@ -77,6 +77,14 @@ const applyOffer = async (req, res) => {
   }
 };
 
+const getApplicants = async (req, res) => {
+  const offer = await Offer.findById(req.params.id)
+    .populate("applicants")
+    .lean()
+    .exec();
+  res.json(offer.applicants);
+};
+
 module.exports = {
   getAllOffers,
   getOffer,
@@ -84,4 +92,5 @@ module.exports = {
   updateOffer,
   deleteOffer,
   applyOffer,
+  getApplicants,
 };
