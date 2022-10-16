@@ -46,3 +46,14 @@ const updateOffer = async (req, res) => {
     });
   }
 };
+
+const deleteOffer = async (req, res) => {
+  try {
+    const offer = await Offer.findByIdAndDelete(req.params.id);
+    res.json(offer);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
