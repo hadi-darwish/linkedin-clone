@@ -9,6 +9,7 @@ const {
 const authMiddleware = require("../middlewares/auth.middleware");
 const router = Router();
 router.post("/", authMiddleware, createOffer);
-router.get("/", getAllOffers);
-router.get("/:id", getOffer);
+router.get("/", authMiddleware, getAllOffers);
+router.get("/:id", authMiddleware, getOffer);
+router.put("/:id", authMiddleware, updateOffer);
 module.exports = router;
