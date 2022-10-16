@@ -12,4 +12,5 @@ router.post("/", authMiddleware, createOffer);
 router.get("/", authMiddleware, getAllOffers);
 router.get("/:id", authMiddleware, getOffer);
 router.put("/:id", authMiddleware, updateOffer);
+router.delete("/:id", authMiddleware, deleteOffer);
 module.exports = router;
