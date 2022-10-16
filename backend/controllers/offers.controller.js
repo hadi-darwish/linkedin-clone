@@ -1,4 +1,5 @@
 const Offer = require("../models/offer.model");
+const User = require("../models/user.model");
 
 const getAllOffers = async (req, res) => {
   const offers = await Offer.find().populate("company").lean().exec();
@@ -22,6 +23,9 @@ const createOffer = async (req, res) => {
     offer.company = req.user._id;
 
     await offer.save();
+    const user = await User.findById(req.user._id);
+    user.offers.push(offer._id);
+    await user.save();
     res.json(offer);
   } catch (err) {
     res.status(400).json({

@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Offer = require("../models/offer.model");
 
 const updateUser = async (req, res) => {
   const { name, email, password, type, age, profilePicture } = req.body;
@@ -20,4 +21,9 @@ const updateUser = async (req, res) => {
   }
 };
 
-module.exports = { updateUser };
+const getCompanies = async (req, res) => {
+  const companies = await User.find({ type: "company" }).lean();
+  res.json(companies);
+};
+
+module.exports = { updateUser, getCompanies };
