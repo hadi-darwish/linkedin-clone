@@ -57,3 +57,11 @@ const deleteOffer = async (req, res) => {
     });
   }
 };
+
+module.exports = {
+  getOffers,
+  getOffer,
+  createOffer,
+  updateOffer,
+  deleteOffer,
+};
