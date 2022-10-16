@@ -61,6 +61,22 @@ const deleteOffer = async (req, res) => {
   }
 };
 
+const applyOffer = async (req, res) => {
+  try {
+    const offer = await Offer.findById(req.params.id);
+    offer.applicants.push(req.user._id);
+    await offer.save();
+    const user = await User.findById(req.user._id);
+    user.applications.push(offer._id);
+    await user.save();
+    res.json(offer);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 module.exports = {
   getAllOffers,
   getOffer,
