@@ -29,3 +29,20 @@ const createOffer = async (req, res) => {
     });
   }
 };
+
+const updateOffer = async (req, res) => {
+  const { title, description, company } = req.body;
+
+  try {
+    const offer = await Offer.findByIdAndUpdate(req.params.id, {
+      title,
+      description,
+      company,
+    });
+    res.json(offer);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
