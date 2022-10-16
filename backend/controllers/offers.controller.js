@@ -19,7 +19,7 @@ const createOffer = async (req, res) => {
     const offer = new Offer();
     offer.title = title;
     offer.description = description;
-    offer.company = company;
+    offer.company = req.user._id;
 
     await offer.save();
     res.json(offer);
@@ -37,7 +37,6 @@ const updateOffer = async (req, res) => {
     const offer = await Offer.findByIdAndUpdate(req.params.id, {
       title,
       description,
-      company,
     });
     res.json(offer);
   } catch (err) {
