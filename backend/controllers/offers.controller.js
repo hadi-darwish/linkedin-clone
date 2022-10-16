@@ -83,4 +83,5 @@ module.exports = {
   createOffer,
   updateOffer,
   deleteOffer,
+  applyOffer,
 };
