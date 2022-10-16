@@ -13,6 +13,7 @@ const userSchema = new mongoose.Schema({
   password: {
     type: String,
     required: "Password is required",
+    select: false,
   },
   type: {
     type: String,
@@ -50,3 +51,7 @@ const userSchema = new mongoose.Schema({
     },
   },
 });
+
+const User = mongoose.model("User", userSchema);
+
+module.exports = User;
