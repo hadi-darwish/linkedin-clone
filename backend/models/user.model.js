@@ -39,6 +39,13 @@ const userSchema = new mongoose.Schema({
     },
   ],
 
+  applications: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Offer",
+    },
+  ],
+
   easyToApply: {
     yearsOfExperience: {
       type: Number,
