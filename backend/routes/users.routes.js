@@ -1,5 +1,9 @@
 const { Router } = require("express");
-const { updateUser, getCompanies } = require("../controllers/users.controller");
+const {
+  updateUser,
+  getCompanies,
+  easyToApply,
+} = require("../controllers/users.controller");
 const {
   applyOffer,
   getApplicants,
@@ -13,6 +17,8 @@ router.put("/:id", authMiddleware, updateUser);
 router.get("/companies", authMiddleware, getCompanies);
 
 router.post("/apply/:id", authMiddleware, applyOffer);
+
+router.post("/easy-apply", authMiddleware, easyToApply);
 
 router.get("/applicants/:id", authMiddleware, companyMiddleware, getApplicants);
 module.exports = router;
