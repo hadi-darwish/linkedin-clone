@@ -1,4 +1,5 @@
 const User = require("../models/user.model");
+const Offer = require("../models/offer.model");
 
 const toggleFollow = async (req, res) => {
   const { company_id } = req.body;
@@ -26,4 +27,16 @@ const toggleFollow = async (req, res) => {
   }
 };
 
-module.exports = { toggleFollow };
+const getOffers = async (req, res) => {
+  const user = await User.findById(req.user._id)
+    .populate("following")
+    .lean()
+    .exec();
+  const offers = await Offer.find({ company: { $in: user.following } })
+    .populate("company")
+    .lean()
+    .exec();
+  res.json(offers);
+};
+
+module.exports = { toggleFollow, getOffers };
