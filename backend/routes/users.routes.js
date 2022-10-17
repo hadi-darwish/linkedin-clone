@@ -8,7 +8,10 @@ const {
   applyOffer,
   getApplicants,
 } = require("../controllers/offers.controller");
-const { toggleFollow } = require("../controllers/follows.controller");
+const {
+  toggleFollow,
+  getOffers,
+} = require("../controllers/follows.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const companyMiddleware = require("../middlewares/company.middleware");
 const router = Router();
@@ -16,6 +19,8 @@ const router = Router();
 router.put("/:id", authMiddleware, updateUser);
 
 router.get("/companies", authMiddleware, getCompanies);
+
+router.get("/notification", authMiddleware, getOffers);
 
 router.post("/apply/:id", authMiddleware, applyOffer);
 
