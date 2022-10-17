@@ -26,4 +26,20 @@ const getCompanies = async (req, res) => {
   res.json(companies);
 };
 
-module.exports = { updateUser, getCompanies };
+const easyToApply = async (req, res) => {
+  const { yearsOfExperience, isEducated, resume } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    user.easyToApply.yearsOfExperience = yearsOfExperience;
+    user.easyToApply.isEducated = isEducated;
+    user.easyToApply.resume = resume;
+    await user.save();
+    res.json(user);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
+module.exports = { updateUser, getCompanies, easyToApply };

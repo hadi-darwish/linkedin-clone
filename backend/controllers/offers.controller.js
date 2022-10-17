@@ -35,7 +35,7 @@ const createOffer = async (req, res) => {
 };
 
 const updateOffer = async (req, res) => {
-  const { title, description, company } = req.body;
+  const { title, description } = req.body;
 
   try {
     const offer = await Offer.findByIdAndUpdate(req.params.id, {
