@@ -23,10 +23,9 @@ const SignUp = () => {
       type: userType,
       profilePicture: image,
     };
-    axios
-      .post("http://localhost:8000/auth/signup", data)
+    request({ method: "post", url: "/auth/signup", data })
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
         navigate("/");
       })
       .catch((err) => {
