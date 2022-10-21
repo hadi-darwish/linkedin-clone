@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import request from "../../config/axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
+import "./Login.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,8 +28,20 @@ const Login = () => {
     <div className="container">
       <div className="login">
         <h1>Login</h1>
-        <Input type="email" text="Email" />
-        <Input type="password" text="Password" />
+        <Input
+          type="email"
+          text="Email"
+          value={email}
+          id="email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <Input
+          type="password"
+          text="Password"
+          value={password}
+          id="password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
         <Button text="Login" onClick={onClick} />
       </div>
     </div>
