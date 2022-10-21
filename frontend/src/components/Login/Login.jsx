@@ -4,6 +4,7 @@ import request from "../../config/axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import "./Login.css";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -17,7 +18,7 @@ const Login = () => {
     axios
       .post("http://localhost:8000/auth/login", data)
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -43,6 +44,7 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
         />
         <Button text="Login" onClick={onClick} />
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>
   );

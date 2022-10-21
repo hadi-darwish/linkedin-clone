@@ -27,7 +27,7 @@ const SignUp = () => {
       .post("http://localhost:8000/auth/signup", data)
       .then((res) => {
         console.log(res.data);
-        navigate("/login");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -94,7 +94,7 @@ const SignUp = () => {
           />
         </fieldset>
         <Button text="Sign Up" id="sign-up" onClick={onClick} />
-        <Link to="/login">Already have an account? Login</Link>
+        <Link to="/">Already have an account? Login</Link>
       </div>
     </div>
   );
