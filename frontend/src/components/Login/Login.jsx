@@ -15,10 +15,11 @@ const Login = () => {
       email,
       password,
     };
-    axios
-      .post("http://localhost:8000/auth/login", data)
+    request({ method: "post", url: "/auth/login", data })
       .then((res) => {
-        console.log(res.data);
+        console.log(res);
+        localStorage.setItem("token", res.token);
+        localStorage.setItem("user", res.result);
       })
       .catch((err) => {
         console.log(err);
