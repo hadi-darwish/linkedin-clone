@@ -22,7 +22,7 @@ function App() {
       </header>
 
       <Button />
-      <Input />
+      <Input text={"input"} type={"text"} />
     </div>
   );
 }

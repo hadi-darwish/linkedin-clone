@@ -1,9 +1,9 @@
 import React from "react";
-
+import "./Input.css";
 const Input = ({ type, value, setValue, text }) => {
   return (
-    <>
-      <label>{text}</label>
+    <div className="div">
+      <label className="label">{text}</label>
       <input
         className="input"
         type={type}
@@ -11,7 +11,7 @@ const Input = ({ type, value, setValue, text }) => {
         onChange={(e) => setValue(e.target.value)}
         placeholder={text}
       />
-    </>
+    </div>
   );
 };
 
