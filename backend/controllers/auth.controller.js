@@ -29,13 +29,15 @@ const login = async (req, res) => {
 };
 
 const signup = async (req, res) => {
-  const { name, email, password, type } = req.body;
+  const { name, email, password, type, age, profilePicture } = req.body;
   try {
     const user = new User();
     user.name = name;
     user.email = email;
     user.password = await bcrypt.hash(password, 10);
+    user.age = age;
     user.type = type;
+    user.profilePicture = profilePicture;
 
     await user.save();
     res.json(user);
