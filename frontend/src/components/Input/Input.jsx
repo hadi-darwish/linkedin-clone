@@ -1,9 +1,18 @@
 import React from "react";
 import "./Input.css";
-const Input = ({ type, value, onChange, text, name, id, onSelect }) => {
+const Input = ({
+  type,
+  value,
+  onChange,
+  text,
+  name,
+  id,
+  onSelect,
+  labelOn = true,
+}) => {
   return (
     <div className="div">
-      <label className="label">{text}</label>
+      {labelOn && <label htmlFor={id}>{text}</label>}
       <input
         className="input"
         type={type}
