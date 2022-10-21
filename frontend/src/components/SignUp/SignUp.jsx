@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import request from "../../config/axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
@@ -12,7 +13,7 @@ const SignUp = () => {
   const [age, setAge] = useState("");
   const [userType, setUserType] = useState("user");
   const [image, setImage] = useState("");
-
+  const navigate = useNavigate();
   const onClick = () => {
     const data = {
       name,
@@ -26,6 +27,7 @@ const SignUp = () => {
       .post("http://localhost:8000/auth/signup", data)
       .then((res) => {
         console.log(res.data);
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -92,6 +94,7 @@ const SignUp = () => {
           />
         </fieldset>
         <Button text="Sign Up" id="sign-up" onClick={onClick} />
+        <Link to="/login">Already have an account? Login</Link>
       </div>
     </div>
   );
