@@ -1,3 +1,4 @@
+import React from "react";
 import "./Button.css";
 const Button = ({ color, type, text, onClick }) => {
   return (
