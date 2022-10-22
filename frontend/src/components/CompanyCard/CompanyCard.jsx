@@ -1,6 +1,7 @@
 import React from "react";
 import request from "../../config/axios";
 import Button from "../Button/Button";
+import "./CompanyCard.css";
 
 const CompanyCard = ({ company }) => {
   const onClick = () => {
