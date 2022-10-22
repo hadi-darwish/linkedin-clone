@@ -94,7 +94,7 @@ const SignUp = () => {
             onChange={(e) => setUserType(e.target.value)}
           />
         </fieldset>
-        <Button text="Sign Up" id="sign-up" onClick={onClick} />
+        <Button text="Sign Up" id="sign-up" onClick={onClick} hidden={true} />
         <Link to="/">Already have an account? Login</Link>
       </div>
     </div>

@@ -18,7 +18,7 @@ const NavBar = () => {
           <img src={logo} alt="logo" />
         </div>
 
-        {user !== null && (
+        {user !== null && localStorage.getItem("token") && (
           <>
             {user.type === "user" && (
               <div className="nav-center">
@@ -32,13 +32,25 @@ const NavBar = () => {
               </div>
             )}
             <div className="nav-right">
-              <Link to="/home">Home</Link>
+              {user.type === "user" ? (
+                <>
+                  <Link to="/home">Home</Link>
+                  <Link to="/jobs">Jobs</Link>
+                </>
+              ) : (
+                <Link to="/add-offer">Add Offer</Link>
+              )}
+
               {user.type === "user" ? (
                 <Link to="/notifications">Notifications</Link>
               ) : (
-                <Link to="/applied">Applied users</Link>
+                <>
+                  <Link to="/view-applied">Applied users</Link>
+                  <Link to="/following">Following users</Link>
+                </>
               )}
-              <Link to="/editprofile">Edit Profile</Link>
+              <Link to="/edit-profile">Edit Profile</Link>
+
               <Link
                 to="/"
                 onClick={() => {

@@ -61,7 +61,7 @@ const EditProfilePage = () => {
           id="image"
           onChange={(e) => setImage(e.target.value)}
         />
-        <Button text="Edit Profile" onClick={onClick} />
+        <Button text="Edit Profile" onClick={onClick} hidden={true} />
       </div>
     </>
   );

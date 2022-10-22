@@ -4,11 +4,12 @@ import request from "../../config/axios";
 import Button from "../Button/Button";
 import Input from "../Input/Input";
 import "./Login.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const onClick = () => {
     const data = {
@@ -20,6 +21,12 @@ const Login = () => {
         console.log(res);
         localStorage.setItem("token", res.token);
         localStorage.setItem("user", JSON.stringify(res.result));
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (user.type === "user") {
+          navigate("/home");
+        } else {
+          navigate("/add-offer");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -44,7 +51,7 @@ const Login = () => {
           id="password"
           onChange={(e) => setPassword(e.target.value)}
         />
-        <Button text="Login" onClick={onClick} />
+        <Button text="Login" onClick={onClick} hidden={true} />
         <Link to="/signup">Sign Up</Link>
       </div>
     </div>
