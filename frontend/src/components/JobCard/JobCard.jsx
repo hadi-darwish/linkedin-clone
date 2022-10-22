@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import request from "../../config/axios";
 import Button from "../Button/Button";
 import "./JobCard.css";
 import logo from "../../assets/logo.svg";
 
 const JobCard = ({ offer_id, title, description, company }) => {
+  const [isApplied, setIsApplied] = useState(false);
+
+  request({ method: "post", url: "/users/have-applied", data: { offer_id } })
+    .then((res) => {
+      setIsApplied(res);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+
   const onClick = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     request({
@@ -16,6 +26,7 @@ const JobCard = ({ offer_id, title, description, company }) => {
     })
       .then((res) => {
         console.log(res);
+        setIsApplied(true);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +45,12 @@ const JobCard = ({ offer_id, title, description, company }) => {
         </div>
         <div className="job-description">{description}</div>
 
-        <Button text="Apply" onClick={onClick} />
+        <Button
+          text={isApplied ? "Applied" : "Apply"}
+          onClick={onClick}
+          color={isApplied ? "red" : "green"}
+          clickable={!isApplied}
+        />
       </div>
     </>
   );

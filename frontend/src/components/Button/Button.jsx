@@ -1,6 +1,6 @@
 import React from "react";
 import "./Button.css";
-const Button = ({ color, type, text, onClick, id }) => {
+const Button = ({ color, type, text, onClick, id, clickable }) => {
   return (
     <>
       {" "}
@@ -10,6 +10,7 @@ const Button = ({ color, type, text, onClick, id }) => {
         type={type}
         onClick={onClick}
         id={id}
+        disabled={!clickable}
       >
         {text}
       </button>
