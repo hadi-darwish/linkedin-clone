@@ -40,5 +40,5 @@ router.post("/have-applied", authMiddleware, haveApplied);
 
 router.get("/applicants/:id", authMiddleware, companyMiddleware, getApplicants);
 
-router.get("/company-offers", authMiddleware, companyMiddleware);
+router.get("/company-offers", authMiddleware, getOffersByCompany);
 module.exports = router;
