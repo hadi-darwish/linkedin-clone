@@ -43,6 +43,18 @@ const isFollowing = async (req, res) => {
   }
 };
 
+const getFollowers = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+    const followers = await User.find({ _id: { $in: user.followers } }).lean();
+    res.json(followers);
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 const getOffers = async (req, res) => {
   const user = await User.findById(req.user._id)
     .populate("following")
@@ -55,4 +67,4 @@ const getOffers = async (req, res) => {
   res.json(offers);
 };
 
-module.exports = { toggleFollow, getOffers, isFollowing };
+module.exports = { toggleFollow, getOffers, isFollowing, getFollowers };
