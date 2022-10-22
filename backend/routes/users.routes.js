@@ -8,6 +8,7 @@ const {
   applyOffer,
   getApplicants,
   haveApplied,
+  getOffersByCompany,
 } = require("../controllers/offers.controller");
 const {
   toggleFollow,
@@ -38,4 +39,6 @@ router.get("/followers", authMiddleware, companyMiddleware, getFollowers);
 router.post("/have-applied", authMiddleware, haveApplied);
 
 router.get("/applicants/:id", authMiddleware, companyMiddleware, getApplicants);
+
+router.get("/company-offers", authMiddleware, companyMiddleware);
 module.exports = router;
