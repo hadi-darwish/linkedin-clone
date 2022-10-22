@@ -6,6 +6,11 @@ const getAllOffers = async (req, res) => {
   res.json(offers);
 };
 
+const getOffersByCompany = async (req, res) => {
+  const offers = await Offer.find({ company: req.user_id }).lean().exec();
+  res.json(offers);
+};
+
 const getOffer = async (req, res) => {
   const offer = await Offer.findById(req.params.id)
     .populate("company")
@@ -110,4 +115,5 @@ module.exports = {
   applyOffer,
   getApplicants,
   haveApplied,
+  getOffersByCompany,
 };
