@@ -19,7 +19,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         localStorage.setItem("token", res.token);
-        localStorage.setItem("user", res.result);
+        localStorage.setItem("user", JSON.stringify(res.result));
       })
       .catch((err) => {
         console.log(err);
