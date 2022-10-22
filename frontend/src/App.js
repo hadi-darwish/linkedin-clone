@@ -7,6 +7,7 @@ import JobCard from "./components/JobCard/JobCard";
 import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import NotificationPage from "./pages/NotificationPage";
+import EditProfilePage from "./pages/EditProfilePage";
 
 function App() {
   return (
@@ -14,7 +15,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <NotificationPage />
+          <EditProfilePage />
           <Routes>
             <Route path="*" element={<LandingPage />} />
           </Routes>
