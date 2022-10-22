@@ -49,7 +49,7 @@ const JobCard = ({ offer_id, title, description, company }) => {
           text={isApplied ? "Applied" : "Apply"}
           onClick={onClick}
           color={isApplied ? "red" : "green"}
-          clickable={!isApplied}
+          clickable={isApplied}
         />
       </div>
     </>

@@ -6,6 +6,7 @@ import NavBar from "./components/NavBar/NavBar";
 import JobCard from "./components/JobCard/JobCard";
 import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
+import NotificationPage from "./pages/NotificationPage";
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <JobsPage />
+          <NotificationPage />
           <Routes>
             <Route path="*" element={<LandingPage />} />
           </Routes>

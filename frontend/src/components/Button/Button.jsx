@@ -10,7 +10,7 @@ const Button = ({ color, type, text, onClick, id, clickable }) => {
         type={type}
         onClick={onClick}
         id={id}
-        disabled={!clickable}
+        disabled={clickable}
       >
         {text}
       </button>
