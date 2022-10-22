@@ -77,6 +77,22 @@ const applyOffer = async (req, res) => {
   }
 };
 
+const haveApplied = async (req, res) => {
+  try {
+    const { offer_id } = req.body;
+    const offer = await Offer.findById(offer_id);
+    if (offer.applicants.includes(req.user._id)) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 const getApplicants = async (req, res) => {
   const offer = await Offer.findById(req.params.id)
     .populate("applicants")
