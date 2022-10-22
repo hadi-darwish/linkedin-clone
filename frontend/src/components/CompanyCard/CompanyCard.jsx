@@ -3,7 +3,7 @@ import request from "../../config/axios";
 import Button from "../Button/Button";
 import "./CompanyCard.css";
 
-const CompanyCard = ({ company }) => {
+const CompanyCard = ({ company, hidden }) => {
   const data1 = {
     company_id: company._id,
   };
@@ -44,6 +44,7 @@ const CompanyCard = ({ company }) => {
           text={isFollowed ? "Unfollow" : "Follow"}
           onClick={onClick}
           color={isFollowed ? "red" : "green"}
+          hidden={hidden}
         />
       </div>
     </>

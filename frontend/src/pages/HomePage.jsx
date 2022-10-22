@@ -21,7 +21,7 @@ const HomePage = () => {
       <h1>Home Page</h1>
 
       {companies.map((company) => (
-        <CompanyCard company={company} />
+        <CompanyCard company={company} hidden={true} />
       ))}
     </>
   );

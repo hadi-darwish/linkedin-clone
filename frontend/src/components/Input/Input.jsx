@@ -9,6 +9,7 @@ const Input = ({
   id,
   onSelect,
   labelOn = true,
+  checked,
 }) => {
   return (
     <div className="div">
@@ -22,6 +23,7 @@ const Input = ({
         name={name}
         id={id}
         onSelect={onSelect}
+        checked={checked}
       />
     </div>
   );

@@ -8,6 +8,7 @@ import HomePage from "./pages/HomePage";
 import JobsPage from "./pages/JobsPage";
 import NotificationPage from "./pages/NotificationPage";
 import EditProfilePage from "./pages/EditProfilePage";
+import FollowingPeople from "./pages/FollwingPeople";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       <BrowserRouter>
         <div className="App">
           <NavBar />
-          <EditProfilePage />
+          <FollowingPeople />
           <Routes>
             <Route path="*" element={<LandingPage />} />
           </Routes>

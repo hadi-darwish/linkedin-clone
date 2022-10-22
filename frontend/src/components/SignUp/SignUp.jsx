@@ -11,7 +11,7 @@ const SignUp = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
-  const [userType, setUserType] = useState("user");
+  const [userType, setUserType] = useState("");
   const [image, setImage] = useState("");
   const navigate = useNavigate();
   const onClick = () => {
@@ -82,6 +82,7 @@ const SignUp = () => {
             value={"user"}
             id="user"
             onSelect={(e) => setUserType(e.target.value)}
+            onChange={(e) => setUserType(e.target.value)}
           />
           <Input
             type="radio"
@@ -90,6 +91,7 @@ const SignUp = () => {
             value={"company"}
             id="company"
             onSelect={(e) => setUserType(e.target.value)}
+            onChange={(e) => setUserType(e.target.value)}
           />
         </fieldset>
         <Button text="Sign Up" id="sign-up" onClick={onClick} />
