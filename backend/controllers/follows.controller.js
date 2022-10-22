@@ -27,6 +27,22 @@ const toggleFollow = async (req, res) => {
   }
 };
 
+const isFollowing = async (req, res) => {
+  const { company_id } = req.body;
+  try {
+    const user = await User.findById(req.user._id);
+    if (user.following.includes(company_id)) {
+      res.json(true);
+    } else {
+      res.json(false);
+    }
+  } catch (err) {
+    res.status(400).json({
+      message: err.message,
+    });
+  }
+};
+
 const getOffers = async (req, res) => {
   const user = await User.findById(req.user._id)
     .populate("following")
@@ -39,4 +55,4 @@ const getOffers = async (req, res) => {
   res.json(offers);
 };
 
-module.exports = { toggleFollow, getOffers };
+module.exports = { toggleFollow, getOffers, isFollowing };

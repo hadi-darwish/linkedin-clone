@@ -11,6 +11,7 @@ const {
 const {
   toggleFollow,
   getOffers,
+  isFollowing,
 } = require("../controllers/follows.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const companyMiddleware = require("../middlewares/company.middleware");
@@ -27,6 +28,8 @@ router.post("/apply/:id", authMiddleware, applyOffer);
 router.post("/easy-apply", authMiddleware, easyToApply);
 
 router.post("/follow", authMiddleware, toggleFollow);
+
+router.post("/is-following", authMiddleware, isFollowing);
 
 router.get("/applicants/:id", authMiddleware, companyMiddleware, getApplicants);
 module.exports = router;
