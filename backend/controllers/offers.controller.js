@@ -109,4 +109,5 @@ module.exports = {
   deleteOffer,
   applyOffer,
   getApplicants,
+  haveApplied,
 };
